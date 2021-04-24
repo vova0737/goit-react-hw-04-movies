@@ -24,3 +24,7 @@
 .HeaderLinkActive {
     color: red;
 }
+
+.LoaderContainer {
+    margin-top: 150px;
+}

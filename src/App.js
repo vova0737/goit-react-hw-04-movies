@@ -41,7 +41,9 @@ const App = () => (
         </NavLink>
       </li>
     </ul>
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense
+      fallback={<h1 className={styles.LoaderContainer}>Loading...</h1>}
+    >
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/movies/:movieId" component={MovieDetailsPage} />
