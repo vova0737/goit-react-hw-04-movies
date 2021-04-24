@@ -10,8 +10,9 @@ class HomePage extends Component {
   };
 
   async componentDidMount() {
+    const key = '1690d1319b4e719ac3308f10c68ac649';
     const response = await Axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=132f2a543c82d69a556f0bb280a697a7`,
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${key}`,
     );
 
     this.setState({ movies: response.data.results });

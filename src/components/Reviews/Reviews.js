@@ -9,8 +9,9 @@ class Reviews extends Component {
   };
   async componentDidMount() {
     const { movieId } = this.props.match.params;
+    const key = '1690d1319b4e719ac3308f10c68ac649';
     const response = await Axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=132f2a543c82d69a556f0bb280a697a7&language=en-US&page=1`,
+      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${key}&language=en-US&page=1`,
     );
 
     this.setState({ reviews: response.data.results });

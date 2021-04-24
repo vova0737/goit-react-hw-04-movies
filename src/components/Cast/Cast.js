@@ -1,8 +1,7 @@
 import { React, Component } from 'react';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
-// import logo from '../../img/no_user_logo.png';
-import logo from '../../img/no_user_logo.png';
+import logo from '../../img/no_photo.jpg';
 import styles from './Cast.module.css';
 
 class Cast extends Component {
@@ -11,8 +10,9 @@ class Cast extends Component {
   };
   async componentDidMount() {
     const { movieId } = this.props.match.params;
+    const key = '1690d1319b4e719ac3308f10c68ac649';
     const response = await Axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=132f2a543c82d69a556f0bb280a697a7&language=en-US`,
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}&language=en-US`,
     );
     this.setState({ cast: response.data.cast });
   }

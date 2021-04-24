@@ -1,5 +1,4 @@
 import React, { Suspense, lazy } from 'react';
-// import './App.css'
 import { Route, NavLink, Switch } from 'react-router-dom';
 import styles from './App.module.css';
 
@@ -15,7 +14,7 @@ const MoviesPage = lazy(() =>
 );
 const MovieDetailsPage = lazy(() =>
   import(
-    './components/MovieDetailsPage/MovieDetailsPage.js' /* webpackChunkName: "movie--details-page" */
+    './components/MovieDetailsPage/MovieDetailsPage.js' /* webpackChunkName: "movie-details-page" */
   ),
 );
 
@@ -42,7 +41,6 @@ const App = () => (
         </NavLink>
       </li>
     </ul>
-    {/* <HomePage /> */}
     <Suspense fallback={<h1>Loading...</h1>}>
       <Switch>
         <Route exact path="/" component={HomePage} />

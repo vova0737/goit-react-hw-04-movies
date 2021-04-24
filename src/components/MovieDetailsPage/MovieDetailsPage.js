@@ -5,11 +5,11 @@ import Axios from 'axios';
 import styles from './MovieDetailsPage.module.css';
 
 const Cast = lazy(() =>
-  import('../Cast/Cast.js' /* webpackChunkName: "mivie-cast" */),
+  import('../Cast/Cast.js' /* webpackChunkName: "movie-cast" */),
 );
 
 const Reviews = lazy(() =>
-  import('../Reviews/Reviews.js' /* webpackChunkName: "mivie-review" */),
+  import('../Reviews/Reviews.js' /* webpackChunkName: "movie-review" */),
 );
 
 class MovieDetailsPage extends Component {
@@ -26,8 +26,9 @@ class MovieDetailsPage extends Component {
 
   async componentDidMount() {
     const { movieId } = this.props.match.params;
+    const key = '1690d1319b4e719ac3308f10c68ac649';
     const response = await Axios.get(
-      `https://api.themoviedb.org/3/movie/${this.props.match.params.movieId}?api_key=132f2a543c82d69a556f0bb280a697a7`,
+      `https://api.themoviedb.org/3/movie/${this.props.match.params.movieId}?api_key=${key}`,
     );
 
     this.setState({ movie: response.data });
