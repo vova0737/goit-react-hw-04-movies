@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
+import NavBar from './components/NavBar'
 import styles from './App.module.css';
 
 const HomePage = lazy(() =>
@@ -20,27 +21,7 @@ const MovieDetailsPage = lazy(() =>
 
 const App = () => (
   <>
-    <ul className={styles.HeaderContainer}>
-      <li className={styles.HeaderTitles}>
-        <NavLink
-          exact
-          to="/"
-          className={styles.HeaderLink}
-          activeClassName={styles.HeaderLinkActive}
-        >
-          <h3>Home</h3>
-        </NavLink>
-      </li>
-      <li className={styles.HeaderTitles}>
-        <NavLink
-          to="/movies"
-          className={styles.HeaderLink}
-          activeClassName={styles.HeaderLinkActive}
-        >
-          <h3>Movies</h3>
-        </NavLink>
-      </li>
-    </ul>
+    <NavBar />
     <Suspense
       fallback={<h1 className={styles.LoaderContainer}>Loading...</h1>}
     >

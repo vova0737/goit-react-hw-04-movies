@@ -1,4 +1,4 @@
-/* .HeaderContainer {
+.HeaderContainer {
     position: fixed;
     top: 0;
     width: 100%;
@@ -27,4 +27,4 @@
 
 .LoaderContainer {
     margin-top: 150px;
-} */
+}
