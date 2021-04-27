@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/components/Reviews/Reviews.module.css"],"names":[],"mappings":"AAAA,6BACI,eACJ","file":"movie-review.0b4e1b69.chunk.css","sourcesContent":[".ReviewAuthor {\r\n    list-style: none;\r\n}\r\n\r\n"]}
