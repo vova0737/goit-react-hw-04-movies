@@ -1,8 +1,7 @@
 import { React, Component } from 'react';
-import PropTypes from 'prop-types';
-import Axios from 'axios';
 import { NavLink, withRouter } from 'react-router-dom';
 import styles from './HomePage.module.css';
+import { getPopularFilms } from '../../services/movies-api';
 
 class HomePage extends Component {
   state = {
@@ -10,12 +9,10 @@ class HomePage extends Component {
   };
 
   async componentDidMount() {
-    const key = '1690d1319b4e719ac3308f10c68ac649';
-    const response = await Axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${key}`,
-    );
-
-    this.setState({ movies: response.data.results });
+    const response = await getPopularFilms();
+    this.setState({
+      movies: response.results,
+    });
   }
 
   render() {

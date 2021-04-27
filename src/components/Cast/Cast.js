@@ -1,21 +1,22 @@
 import { React, Component } from 'react';
 import PropTypes from 'prop-types';
-import Axios from 'axios';
 import logo from '../../img/no_photo.jpg';
 import styles from './Cast.module.css';
+import { getMovieCast } from '../../services/movies-api';
 
 class Cast extends Component {
   state = {
     cast: null,
   };
+
   async componentDidMount() {
-    const { movieId } = this.props.match.params;
-    const key = '1690d1319b4e719ac3308f10c68ac649';
-    const response = await Axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}&language=en-US`,
-    );
-    this.setState({ cast: response.data.cast });
+    const response = await getMovieCast(this.props.match.params.movieId);
+    // console.log(response);
+    this.setState({
+      cast: response.cast,
+    });
   }
+
   render() {
     return (
       this.state.cast && (
@@ -41,5 +42,9 @@ class Cast extends Component {
     );
   }
 }
+
+Cast.propTypes = {
+  movieId: PropTypes.number.isRequired,
+};
 
 export default Cast;

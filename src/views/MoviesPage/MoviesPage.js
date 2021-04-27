@@ -1,8 +1,7 @@
 import { React, Component } from 'react';
-import PropTypes from 'prop-types';
-import Axios from 'axios';
 import { withRouter, NavLink } from 'react-router-dom';
 import queryString from 'query-string';
+import { getMoviesSearch } from '../../services/movies-api';
 import styles from './MoviesPage.module.css';
 
 class MoviesPage extends Component {
@@ -25,12 +24,10 @@ class MoviesPage extends Component {
     this.searchMovies(this.state.searchName);
   };
 
-  searchMovies = async movie => {
-    const key = '1690d1319b4e719ac3308f10c68ac649';
-    const response = await Axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${movie}&language=en-US&page=1&include_adult=false`,
-    );
-    this.setState({ searchResult: response.data.results });
+  searchMovies = async query => {
+    const response = await getMoviesSearch(query);
+    // console.log(response.results);
+    this.setState({ searchResult: response.results });
     this.props.location.state = { searchName: this.state.searchName };
   };
 
@@ -61,7 +58,6 @@ class MoviesPage extends Component {
             onChange={this.handleInput}
             className={styles.SearchInput}
           />
-
           <button
             type="submit"
             onClick={this.handleSubmit}

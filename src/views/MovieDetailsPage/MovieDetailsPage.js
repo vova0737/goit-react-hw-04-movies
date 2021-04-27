@@ -1,15 +1,16 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Route, NavLink, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Axios from 'axios';
+import { getMovieDetails } from '../../services/movies-api';
 import styles from './MovieDetailsPage.module.css';
 
 const Cast = lazy(() =>
-  import('../Cast/Cast.js' /* webpackChunkName: "movie-cast" */),
+  import('../../components/Cast/Cast' /* webpackChunkName: "movie-cast" */),
 );
 
 const Reviews = lazy(() =>
-  import('../Reviews/Reviews.js' /* webpackChunkName: "movie-review" */),
+  import(
+    '../../components/Reviews/Reviews' /* webpackChunkName: "movie-reviews" */
+  ),
 );
 
 class MovieDetailsPage extends Component {
@@ -25,14 +26,12 @@ class MovieDetailsPage extends Component {
   };
 
   async componentDidMount() {
-    const { movieId } = this.props.match.params;
-    const key = '1690d1319b4e719ac3308f10c68ac649';
-    const response = await Axios.get(
-      `https://api.themoviedb.org/3/movie/${this.props.match.params.movieId}?api_key=${key}`,
-    );
-
-    this.setState({ movie: response.data });
+    const response = await getMovieDetails(this.props.match.params.movieId);
+    this.setState({
+      movie: response,
+    });
   }
+
   render() {
     return (
       this.state.movie && (

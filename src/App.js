@@ -1,21 +1,22 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
-import NavBar from './components/NavBar'
+import { Route, Switch } from 'react-router-dom';
+// import { Route, NavLink, Switch } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar'
 import styles from './App.module.css';
 
 const HomePage = lazy(() =>
   import(
-    './components/HomePage/HomePage.js' /* webpackChunkName: "home-page" */
+    './views/HomePage/HomePage.js' /* webpackChunkName: "home-page" */
   ),
 );
 const MoviesPage = lazy(() =>
   import(
-    './components/MoviesPage/MoviesPage.js' /* webpackChunkName: "movie-page" */
+    './views/MoviesPage/MoviesPage.js' /* webpackChunkName: "movie-page" */
   ),
 );
 const MovieDetailsPage = lazy(() =>
   import(
-    './components/MovieDetailsPage/MovieDetailsPage.js' /* webpackChunkName: "movie-details-page" */
+    './views/MovieDetailsPage/MovieDetailsPage.js' /* webpackChunkName: "movie-details-page" */
   ),
 );
 
